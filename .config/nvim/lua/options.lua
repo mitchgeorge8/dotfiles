@@ -9,6 +9,7 @@ vim.o.termguicolors = true
 vim.o.mouse = "a"
 
 vim.wo.fillchars = "eob: "
+vim.wo.signcolumn = "auto"
 
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
