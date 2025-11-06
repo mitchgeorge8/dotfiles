@@ -1,85 +1,155 @@
 {
-    "height": 24,
-    "spacing": 4,
-
-    "modules-left": [
-        "hyprland/workspaces",
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "pulseaudio",
-        "network",
-        "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
-        "keyboard-state",
-        "sway/language",
-        "battery",
-        "battery#bat2",
-        "tray",
-        "custom/power"
-    ],
-
-    "tray": {
-        "spacing": 10,
+  "height": 24,
+  "spacing": 4,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "clock",
+    "custom/pacman",
+    "group/system"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "group/collapsible-tray",
+    "pulseaudio",
+    "network",
+    "custom/power",
+    "custom/notification"
+  ],
+  "clock": {
+    "format": "{:%a %m/%d | %I:%M %p}",
+    "tooltip": false
+  },
+  "custom/pacman": {
+    "format": "󰣇 {}",
+    "interval": 60,
+    "exec": "yay -Qu | wc -l",
+    "exec-if": "exit 0",
+    "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+    "signal": 8,
+    "tooltip-format": "Available package updates"
+  },
+  "group/system": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": true,
+      "click-to-reveal": true
     },
-    "clock": {
-				"format": "{:%I:%M%p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+    "modules": [
+      "custom/system-open",
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+  "custom/system-open": {
+    "format": "  ",
+    "tooltip-format": "System information"
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "{}% "
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "hyprland/workspaces": {
+    "format": "󰄯",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": []
+    }
+  },
+  "group/collapsible-tray": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+      "click-to-reveal": true
     },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+    "modules": [
+      "custom/tray-open",
+      "tray"
+    ]
+  },
+  "custom/tray-open": {
+    "format": "",
+    "tooltip-format": "System tray"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": "󰝟 {icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
-    "memory": {
-        "format": "{}% "
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format-wifi": "({signalStrength}%) 󰖩",
+    "format-ethernet": "󰌗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%): {ipaddr}",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}",
+    "format-disconnected": "󰖪",
+    "on-click": "nm-connection-editor"
+  },
+  "custom/power": {
+    "format": "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate"
+    }
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
     },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml",
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }

@@ -3,6 +3,8 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = {
+				"cssls",
+				"jsonls",
 				"lua_ls",
 				"qmlls",
 				"bashls",
@@ -17,6 +19,9 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
+				css = { "prettier" },
+				json = { "jq" },
+				jsonc = { "jq" },
 				lua = { "stylua" },
 				qml = { "qmlformat" },
 				bash = { "shfmt" },
