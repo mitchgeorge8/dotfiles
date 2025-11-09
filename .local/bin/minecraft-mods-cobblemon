@@ -39,6 +39,7 @@ mods=(
 	"cobblemon-counter"
 	"distraction-free-recipes"
 	"dynamiccrosshair"
+	"easy-item-list"
 	"emi"
 	"ebe"
 	"entity-model-features"
@@ -104,7 +105,11 @@ mods=(
 	"zoomify"
 	)
 
+# Commented packs below are datapacks,
+# need to figure out api for datapacks
 resourcepacks=(
+	# "allthemons-x-mega-showdown-legacy"
+	# "cobbled-armour-trims"
 	"cobblemon-classic-grass-pack"
 	"cobblemon-interface"
 	"cobblemon-interface-modded"
@@ -112,7 +117,10 @@ resourcepacks=(
 	"cobblemotion"
 	"cobblesounds"
 	"e19_cobblemon_minimap_icons"
+	# "more-cobblemon-move-anims"
+	# "path-to-legends"
 	"rct-trainer-textures-plus"
+	# "tims-ultimately-comprehensive-cobblemon-edits-of-destiny"
 	)
 
 for mod in "${mods[@]}"

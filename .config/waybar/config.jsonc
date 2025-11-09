@@ -65,13 +65,7 @@
     ]
   },
   "hyprland/workspaces": {
-    "format": "󰄯",
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": []
-    }
+    "format": ""
   },
   "group/collapsible-tray": {
     "orientation": "inherit",
