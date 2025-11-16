@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+for img in *.heic *.HEIC
+do
+	heif-convert "$img"
+done
