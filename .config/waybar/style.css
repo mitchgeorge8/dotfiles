@@ -29,10 +29,6 @@ button:hover,
 	color: #DCD7BA;
 }
 
-/* #custom-pacman span { */
-/* 	font-size: 16px; */
-/* } */
-
 #custom-system-open,
 #custom-tray-open {
 	font-size: 10px;
@@ -47,4 +43,16 @@ menu {
 
 menuitem:hover {
 	background-color: rgba(42, 42, 55, 0.9);
+}
+
+#custom-shutdown {
+	color: #C34043;
+}
+
+#custom-reboot {
+	color: #98BB6C;
+}
+
+#custom-lock {
+	color: #957FB8;
 }

@@ -4,7 +4,7 @@
   "modules-left": [
     "clock",
     "custom/pacman",
-    "group/system"
+    "group/collapsible-system"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -13,23 +13,23 @@
     "group/collapsible-tray",
     "pulseaudio",
     "network",
-    "custom/power",
-    "custom/notification"
+    "group/collapsible-power"
   ],
   "clock": {
     "format": "{:%I:%M %p}",
     "tooltip": false
   },
   "custom/pacman": {
-    "format": "<span>󰣇</span> {}",
+    "format": " {}",
     "interval": 60,
     "exec": "yay -Qu | wc -l",
     "exec-if": "exit 0",
+    "hide-empty-text": true,
     "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
     "signal": 8,
-    "tooltip-format": "Available package updates"
+    "tooltip-format": "Available Updates"
   },
-  "group/system": {
+  "group/collapsible-system": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 500,
@@ -45,11 +45,10 @@
   },
   "custom/system-open": {
     "format": "",
-    "tooltip-format": "System information"
+    "tooltip-format": "System Monitoring"
   },
   "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false
+    "format": "{usage}% "
   },
   "memory": {
     "format": "{}% "
@@ -80,7 +79,7 @@
   },
   "custom/tray-open": {
     "format": "",
-    "tooltip-format": "System tray"
+    "tooltip-format": "Tray"
   },
   "tray": {
     "spacing": 0
@@ -113,36 +112,31 @@
     "format-disconnected": "󰖪",
     "on-click": "nm-connection-editor"
   },
-  "custom/power": {
-    "format": "⏻",
-    "tooltip": false,
-    "menu": "on-click",
-    "menu-file": "$HOME/.config/waybar/power_menu.xml",
-    "menu-actions": {
-      "shutdown": "shutdown",
-      "reboot": "reboot",
-      "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate"
-    }
-  },
-  "custom/notification": {
-    "tooltip": true,
-    "format": "{icon}",
-    "format-icons": {
-      "notification": "󱅫",
-      "none": "󰂜",
-      "dnd-notification": "󰂠",
-      "dnd-none": "󰪓",
-      "inhibited-notification": "󰂛",
-      "inhibited-none": "󰪑",
-      "dnd-inhibited-notification": "󰂛",
-      "dnd-inhibited-none": "󰪑"
+  "group/collapsible-power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
     },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
+    "modules": [
+      "custom/shutdown",
+      "custom/lock",
+      "custom/reboot"
+    ]
+  },
+  "custom/shutdown": {
+    "format": "",
+    "tooltip-format": "Shutdown",
+    "on-click": "shutdown now"
+  },
+  "custom/reboot": {
+    "format": "",
+    "tooltip-format": "Reboot",
+    "on-click": "reboot"
+  },
+  "custom/lock": {
+    "format": "",
+    "tooltip-format": "Lock",
+    "on-click": "hyprlock"
   }
 }
