@@ -13,6 +13,8 @@
     "group/collapsible-tray",
     "pulseaudio",
     "network",
+    "backlight",
+    "battery",
     "group/collapsible-power"
   ],
   "clock": {
@@ -105,12 +107,45 @@
     "on-click": "pavucontrol"
   },
   "network": {
-    "format-wifi": "({signalStrength}%) 󰖩",
+    "format-wifi": "󰖩",
     "format-ethernet": "󰌗",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%): {ipaddr}",
+    "tooltip-format-wifi": "{essid}",
     "tooltip-format-ethernet": "{ifname}: {ipaddr}",
     "format-disconnected": "󰖪",
     "on-click": "nm-connection-editor"
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip-format": "Brightness"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "tooltip-format": "Battery"
   },
   "group/collapsible-power": {
     "orientation": "inherit",
