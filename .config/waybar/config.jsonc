@@ -1,6 +1,5 @@
 {
-  "height": 24,
-  "spacing": 4,
+  "layer": "top",
   "reload_style_on_change": true,
   "modules-left": [
     "clock",
@@ -18,11 +17,11 @@
     "custom/notification"
   ],
   "clock": {
-    "format": "{:%a %m/%d | %I:%M %p}",
+    "format": "{:%I:%M %p}",
     "tooltip": false
   },
   "custom/pacman": {
-    "format": "󰣇 {}",
+    "format": "<span>󰣇</span> {}",
     "interval": 60,
     "exec": "yay -Qu | wc -l",
     "exec-if": "exit 0",
@@ -45,7 +44,7 @@
     ]
   },
   "custom/system-open": {
-    "format": "  ",
+    "format": "",
     "tooltip-format": "System information"
   },
   "cpu": {
@@ -84,7 +83,7 @@
     "tooltip-format": "System tray"
   },
   "tray": {
-    "spacing": 10
+    "spacing": 0
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
@@ -115,7 +114,7 @@
     "on-click": "nm-connection-editor"
   },
   "custom/power": {
-    "format": "⏻ ",
+    "format": "⏻",
     "tooltip": false,
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/power_menu.xml",
