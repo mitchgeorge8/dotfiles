@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Don't pull sunrise/sunset data or recreate cronjobs if it's already been done once this session
 if [ ! -f "/tmp/sunrise" ]; then
@@ -27,7 +27,7 @@ if [ ! -f "/tmp/sunrise" ]; then
 	# Starting brightness and temperature
 	brightness=50
 	temperature=4000
-	
+
 	# Create cronjobs based on sunrise
 	for i in -60 -30 0 30 60
 	do
@@ -36,7 +36,7 @@ if [ ! -f "/tmp/sunrise" ]; then
 	
 		calc_sunrise=$(date --date="$sunrise + $i minutes" +%k%M)
 	
-		(crontab -l 2>/dev/null; echo "${calc_sunrise: -2} ${calc_sunrise::-2} * * * ddcutil setvcp 10 $brightness; hyprctl -i 0 hyprsunset temperature $temperature") | crontab -
+		(crontab -l 2>/dev/null; echo "${calc_sunrise: -2} ${calc_sunrise::-2} * * * ddcutil setvcp 10 $brightness && pkill -RTMIN+5 waybar; hyprctl -i 0 hyprsunset temperature $temperature") | crontab -
 	done
 	
 	# Create cronjobs based on sunset
@@ -47,7 +47,7 @@ if [ ! -f "/tmp/sunrise" ]; then
 	
 		calc_sunset=$(date --date="$sunset + $i minutes" +%k%M)
 	
-		(crontab -l 2>/dev/null; echo "${calc_sunset: -2} ${calc_sunset::-2} * * * ddcutil setvcp 10 $brightness; hyprctl -i 0 hyprsunset temperature $temperature") | crontab -
+		(crontab -l 2>/dev/null; echo "${calc_sunset: -2} ${calc_sunset::-2} * * * ddcutil setvcp 10 $brightness && pkill -RTMIN+5 waybar; hyprctl -i 0 hyprsunset temperature $temperature") | crontab -
 	done
 fi
 
@@ -91,3 +91,6 @@ else
 	ddcutil setvcp 10 100
 	hyprctl hyprsunset identity -q
 fi
+
+# Force waybar to update
+pkill -RTMIN+5 waybar
