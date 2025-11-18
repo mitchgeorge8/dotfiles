@@ -133,7 +133,7 @@
     "reverse-scrolling": true
   },
   "custom/ddcutil": {
-    // "format": "{percentage}% {icon}",
+    "format": "{percentage}% {icon}",
     "format-icons": [
       "",
       "",
@@ -145,20 +145,13 @@
       "",
       ""
     ],
-		"format": " {text}%",
     "signal": 8,
-    "exec": "~/.config/waybar/brightness.sh get",
-    "on-scroll-up": "~/.config/waybar/brightness.sh up",
-    "on-scroll-down": "~/.config/waybar/brightness.sh down",
-    "on-click": "~/.config/waybar/brightness.sh left_click",
-    "on-click-right":  "~/.config/waybar/brightness.sh right_click",
-    // "return-type": "json",
-    // "exec": "ddcutil --bus 0 --sleep-multiplier 0.0 getvcp 10 | grep -oP 'current.*?=\\s*\\K[0-9]+' | { read x; echo '{\"percentage\":'${x}'}'; }",
-    // "on-scroll-up": "ddcutil --noverify --bus 0 --sleep-multiplier 0.0 setvcp 10 + 10 && pkill -RTMIN+5 waybar",
-    // "on-scroll-down": "ddcutil --noverify --bus 0 --sleep-multiplier 0.0 setvcp 10 - 10 && pkill -RTMIN+5 waybar",
-    // "on-click": "ddcutil --noverify --bus 0 --sleep-multiplier 0.0 setvcp 10 0 && pkill -RTMIN+5 waybar",
-    // "on-click-right": "ddcutil --noverify --bus 0 --sleep-multiplier 0.0 setvcp 10 100 && pkill -RTMIN+5 waybar",
-    // "signal": 5,
+    "return-type": "json",
+    "exec": "~/.config/waybar/brightness",
+    "on-scroll-up": "~/.config/waybar/brightness up",
+    "on-scroll-down": "~/.config/waybar/brightness down",
+    "on-click": "~/.config/waybar/brightness left",
+    "on-click-right": "~/.config/waybar/brightness right",
     "tooltip-format": "Brightness"
   },
   "battery": {
