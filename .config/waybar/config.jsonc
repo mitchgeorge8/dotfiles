@@ -131,7 +131,7 @@
     "exec": "~/.local/bin/temperature",
     "on-scroll-up": "~/.local/bin/temperature up",
     "on-scroll-down": "~/.local/bin/temperature down",
-    "on-click": "~/.local/bintemperature left",
+    "on-click": "~/.local/bin/temperature left",
     "on-click-right": "~/.local/bin/temperature right",
     "tooltip-format": "Temperature"
   },
