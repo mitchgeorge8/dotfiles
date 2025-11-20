@@ -1,0 +1,36 @@
+#!/bin/bash
+
+temp="/tmp/temperature"
+max=6000
+min=3000
+step=200
+signal=5
+
+if [ ! -f $temp ]; then
+	current=$(hyprctl hyprsunset temperature)
+	echo $current > $temp
+else
+	current=$(cat $temp)
+fi
+
+if [[ "$1" == "up" ]]; then
+	new=$((current + step > max ? max : current + step))
+elif [[ "$1" == "down" ]]; then
+	new=$((current - step < min ? min : current - step))
+elif [[ "$1" == "left" ]]; then
+	new=$max
+elif [[ "$1" == "right" ]]; then
+	new=$min
+elif [[ "$1" == "set" ]]; then
+	new=$2
+else
+	new=$current
+fi
+
+echo {\"text\":\"$(echo "scale=1; $new/1000" | bc)\", \"percentage\":$(echo "scale=0; ($new-$min)/(($max-$min)/100)" | bc)}
+pkill -RTMIN+$signal waybar
+
+if [ "$new" -ne "$current" ]; then
+	(hyprctl hyprsunset temperature $new -q) &
+	echo $new > $temp
+fi

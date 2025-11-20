@@ -13,6 +13,7 @@
     "group/collapsible-tray",
     "pulseaudio",
     "network",
+    "custom/hyprsunset",
     "backlight",
     "custom/ddcutil",
     "battery",
@@ -116,6 +117,24 @@
     "format-disconnected": "󰖪",
     "on-click": "nm-connection-editor"
   },
+  "custom/hyprsunset": {
+    "format": "{text}K {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "signal": 5,
+    "return-type": "json",
+    "exec": "~/.local/bin/temperature",
+    "on-scroll-up": "~/.local/bin/temperature up",
+    "on-scroll-down": "~/.local/bin/temperature down",
+    "on-click": "~/.local/bintemperature left",
+    "on-click-right": "~/.local/bin/temperature right",
+    "tooltip-format": "Temperature"
+  },
   "backlight": {
     "format": "{percent}% {icon}",
     "format-icons": [
@@ -147,11 +166,11 @@
     ],
     "signal": 8,
     "return-type": "json",
-    "exec": "~/.config/waybar/brightness",
-    "on-scroll-up": "~/.config/waybar/brightness up",
-    "on-scroll-down": "~/.config/waybar/brightness down",
-    "on-click": "~/.config/waybar/brightness left",
-    "on-click-right": "~/.config/waybar/brightness right",
+    "exec": "~/.local/bin/brightness",
+    "on-scroll-up": "~/.local/bin/brightness up",
+    "on-scroll-down": "~/.local/bin/brightness down",
+    "on-click": "~/.local/bin/brightness left",
+    "on-click-right": "~/.local/bin/brightness right",
     "tooltip-format": "Brightness"
   },
   "battery": {

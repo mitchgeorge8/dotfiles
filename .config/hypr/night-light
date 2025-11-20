@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Custom brightness and temperature functions that work with Waybar
+set_brightness="/home/mitchell/.local/bin/brightness set"
+set_temperature="/home/mitchell/.local/bin/temperature set"
+
 # Don't pull sunrise/sunset data or recreate cronjobs if it's already been done once this session
 if [ ! -f "/tmp/sunrise" ]; then
 	location="USOH0212"
@@ -36,7 +40,7 @@ if [ ! -f "/tmp/sunrise" ]; then
 	
 		calc_sunrise=$(date --date="$sunrise + $i minutes" +%k%M)
 	
-		(crontab -l 2>/dev/null; echo "${calc_sunrise: -2} ${calc_sunrise::-2} * * * ddcutil setvcp 10 $brightness && pkill -RTMIN+5 waybar; hyprctl -i 0 hyprsunset temperature $temperature") | crontab -
+		(crontab -l 2>/dev/null; echo "${calc_sunrise: -2} ${calc_sunrise::-2} * * * $set_brightness $brightness; $set_temperature $temperature") | crontab -
 	done
 	
 	# Create cronjobs based on sunset
@@ -47,7 +51,7 @@ if [ ! -f "/tmp/sunrise" ]; then
 	
 		calc_sunset=$(date --date="$sunset + $i minutes" +%k%M)
 	
-		(crontab -l 2>/dev/null; echo "${calc_sunset: -2} ${calc_sunset::-2} * * * ddcutil setvcp 10 $brightness && pkill -RTMIN+5 waybar; hyprctl -i 0 hyprsunset temperature $temperature") | crontab -
+		(crontab -l 2>/dev/null; echo "${calc_sunset: -2} ${calc_sunset::-2} * * * $set_brightness $brightness; $set_temperature $temperature") | crontab -
 	done
 fi
 
@@ -58,39 +62,36 @@ current_time=$(date +%k%M)
 
 # Change the brightness and temperature based on current time every time this script runs
 if [ $current_time -le $(($sunrise - 100)) ]; then
-	ddcutil setvcp 10 50
-	hyprctl hyprsunset temperature 4000 -q
+	$set_brightness 50
+	$set_temperature 4000
 elif [ $current_time -le $(date --date="$sunrise - 30 minutes" +%k%M) ]; then 
-	ddcutil setvcp 10 60
-	hyprctl hyprsunset temperature 4400 -q
+	$set_brightness 60
+	$set_temperature 4400
 elif [ $current_time -le $sunrise ]; then
-	ddcutil setvcp 10 70
-	hyprctl hyprsunset temperature 4800 -q
+	$set_brightness 70
+	$set_temperature 4800
 elif [ $current_time -le $(date --date="$sunrise + 30 minutes" +%k%M) ]; then
-	ddcutil setvcp 10 80
-	hyprctl hyprsunset temperature 5200 -q
+	$set_brightness 80
+	$set_temperature 5200
 elif [ $current_time -le $(($sunrise + 100)) ]; then
-	ddcutil setvcp 10 90
-	hyprctl hyprsunset temperature 5600 -q
+	$set_brightness 90
+	$set_temperature 5600
 elif [ $current_time -ge $(($sunset + 100)) ]; then
-	ddcutil setvcp 10 50
-	hyprctl hyprsunset temperature 4000 -q
+	$set_brightness 50
+	$set_temperature 4000
 elif [ $current_time -ge $(date --date="$sunset + 30 minutes" +%k%M) ]; then
-	ddcutil setvcp 10 60
-	hyprctl hyprsunset temperature 4400 -q
+	$set_brightness 60
+	$set_temperature 4400
 elif [ $current_time -ge $sunset ]; then
-	ddcutil setvcp 10 70
-	hyprctl hyprsunset temperature 4800 -q
+	$set_brightness 70
+	$set_temperature 4800
 elif [ $current_time -ge $(date --date="$sunset - 30 minutes" +%k%M) ]; then
-	ddcutil setvcp 10 80
-	hyprctl hyprsunset temperature 5200 -q
+	$set_brightness 80
+	$set_temperature 5200
 elif [ $current_time -ge $(($sunset - 100)) ]; then
-	ddcutil setvcp 10 90
-	hyprctl hyprsunset temperature 5600 -q
+	$set_brightness 90
+	$set_temperature 5600
 else
-	ddcutil setvcp 10 100
-	hyprctl hyprsunset identity -q
+	$set_brightness 100
+	$set_temperature 6000
 fi
-
-# Force waybar to update
-pkill -RTMIN+5 waybar
