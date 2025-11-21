@@ -134,6 +134,7 @@
     "on-scroll-down": "~/.local/bin/temperature down",
     "on-click": "~/.local/bin/temperature left",
     "on-click-right": "~/.local/bin/temperature right",
+    "tooltip-format": "{percentage}"
   },
   "backlight": {
     "format": "{icon}",
@@ -172,10 +173,11 @@
     "on-scroll-down": "~/.local/bin/brightness down",
     "on-click": "~/.local/bin/brightness left",
     "on-click-right": "~/.local/bin/brightness right",
+    "tooltip-format": "{percentage}"
   },
   "battery": {
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
+    "format": "{icon}",
+    "format-charging": "",
     "format-icons": [
       "󰂎",
       "󰁺",
@@ -189,7 +191,7 @@
       "󰂂",
       "󰁹"
     ],
-    "tooltip-format": "Battery"
+    "tooltip-format": "{capacity}%"
   },
   "group/collapsible-power": {
     "orientation": "inherit",
