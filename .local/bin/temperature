@@ -26,7 +26,7 @@ else
 	new=$current
 fi
 
-echo {\"percentage\":$(echo $new)}
+echo {\"percentage\":${new}}
 pkill -RTMIN+$signal waybar
 
 if [ "$new" -ne "$current" ]; then
