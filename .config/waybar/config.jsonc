@@ -118,7 +118,7 @@
     "on-click": "nm-connection-editor"
   },
   "custom/hyprsunset": {
-    "format": "{text}K {icon}",
+    "format": "{icon}",
     "format-icons": [
       "",
       "",
@@ -128,15 +128,15 @@
     ],
     "signal": 5,
     "return-type": "json",
+    "hide-empty-text": true,
     "exec": "~/.local/bin/temperature",
     "on-scroll-up": "~/.local/bin/temperature up",
     "on-scroll-down": "~/.local/bin/temperature down",
     "on-click": "~/.local/bin/temperature left",
     "on-click-right": "~/.local/bin/temperature right",
-    "tooltip-format": "Temperature"
   },
   "backlight": {
-    "format": "{percent}% {icon}",
+    "format": "{icon}",
     "format-icons": [
       "",
       "",
@@ -148,11 +148,11 @@
       "",
       ""
     ],
-    "tooltip-format": "Brightness",
+    "tooltip-format": "{percent}",
     "reverse-scrolling": true
   },
   "custom/ddcutil": {
-    "format": "{percentage}% {icon}",
+    "format": "{icon}",
     "format-icons": [
       "",
       "",
@@ -166,12 +166,12 @@
     ],
     "signal": 8,
     "return-type": "json",
+    "hide-empty-text": true,
     "exec": "~/.local/bin/brightness",
     "on-scroll-up": "~/.local/bin/brightness up",
     "on-scroll-down": "~/.local/bin/brightness down",
     "on-click": "~/.local/bin/brightness left",
     "on-click-right": "~/.local/bin/brightness right",
-    "tooltip-format": "Brightness"
   },
   "battery": {
     "format": "{capacity}% {icon}",
