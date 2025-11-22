@@ -11,9 +11,10 @@
   ],
   "modules-right": [
     "tray",
-    "group/collapsible-audio",
-    "group/collapsible-temperature",
-    "group/collapsible-backlight",
+    "pulseaudio",
+    "custom/hyprsunset",
+    "backlight",
+    "custom/ddcutil",
     "battery",
     "group/collapsible-power"
   ],
@@ -70,19 +71,8 @@
   "tray": {
     "spacing": 0
   },
-  "group/collapsible-audio": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "pulseaudio",
-      "pulseaudio#level"
-    ]
-  },
   "pulseaudio": {
-    "format": "{icon}",
+    "format": "{volume}% {icon}",
     "format-bluetooth": "",
     "format-muted": "󰝟",
     "format-icons": {
@@ -97,25 +87,8 @@
     "reverse-scrolling": true,
     "tooltip-format": "Volume"
   },
-  "pulseaudio#level": {
-    "format": "{volume}%",
-    "on-click": "pavucontrol",
-    "reverse-scrolling": true,
-    "tooltip-format": "Volume"
-  },
-  "group/collapsible-temperature": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "custom/hyprsunset",
-      "custom/hyprsunset#level"
-    ]
-  },
   "custom/hyprsunset": {
-    "format": "{icon}",
+    "format": "{text}K {icon}",
     "format-icons": [
       "",
       "",
@@ -133,33 +106,8 @@
     "on-click": "~/.local/bin/temperature max",
     "on-click-right": "~/.local/bin/temperature min"
   },
-  "custom/hyprsunset#level": {
-    "format": "{text}K",
-    "signal": 5,
-    "return-type": "json",
-    "hide-empty-text": true,
-    "exec": "~/.local/bin/temperature",
-    "interval": "once",
-    "on-scroll-up": "~/.local/bin/temperature up",
-    "on-scroll-down": "~/.local/bin/temperature down",
-    "on-click": "~/.local/bin/temperature max",
-    "on-click-right": "~/.local/bin/temperature min"
-  },
-  "group/collapsible-backlight": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "backlight",
-      "backlight#level",
-      "custom/ddcutil",
-      "custom/ddcutil#level"
-    ]
-  },
   "backlight": {
-    "format": "{icon}",
+    "format": "{percent}% {icon}",
     "format-icons": [
       "",
       "",
@@ -171,16 +119,11 @@
       "",
       ""
     ],
-    "tooltip-format": "Brightness",
-    "reverse-scrolling": true
-  },
-  "backlight#level": {
-    "format": "{percent}%",
     "tooltip-format": "Brightness",
     "reverse-scrolling": true
   },
   "custom/ddcutil": {
-    "format": "{icon}",
+    "format": "{percentage}% {icon}",
     "format-icons": [
       "",
       "",
@@ -192,18 +135,6 @@
       "",
       ""
     ],
-    "signal": 8,
-    "return-type": "json",
-    "hide-empty-text": true,
-    "exec": "~/.local/bin/brightness",
-    "interval": "once",
-    "on-scroll-up": "~/.local/bin/brightness up",
-    "on-scroll-down": "~/.local/bin/brightness down",
-    "on-click": "~/.local/bin/brightness max",
-    "on-click-right": "~/.local/bin/brightness min"
-  },
-  "custom/ddcutil#level": {
-    "format": "{percentage}%",
     "signal": 8,
     "return-type": "json",
     "hide-empty-text": true,
