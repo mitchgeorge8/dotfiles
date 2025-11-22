@@ -2,9 +2,7 @@
 
 bus=0
 temp="/tmp/brightness"
-max=100
-min=0
-step=10
+step=1
 signal=8
 
 if [ ! -f $temp ]; then
@@ -16,20 +14,20 @@ else
 fi
 
 if [[ "$1" == "up" ]]; then
-	new=$((current + step > max ? max : current + step))
+	new=$((current + step > 100 ? 100 : current + step))
 elif [[ "$1" == "down" ]]; then
-	new=$((current - step < min ? min : current - step))
-elif [[ "$1" == "left" ]]; then
-	new=$max
-elif [[ "$1" == "right" ]]; then
-	new=$min
+	new=$((current - step < 0 ? 0 : current - step))
+elif [[ "$1" == "max" ]]; then
+	new=100
+elif [[ "$1" == "min" ]]; then
+	new=0
 elif [[ "$1" == "set" ]]; then
 	new=$2
 else
 	new=$current
 fi
 
-echo {\"percentage\":${new}}
+echo "{\"text\":\"${new}\",\"percentage\":${new},\"tooltip\":\"Brightness\"}"
 pkill -RTMIN+$signal waybar
 
 if [ "$new" -ne "$current" ]; then
