@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-
-pacman -Qqen > /home/mitchell/.pkglist
-pacman -Qqem > /home/mitchell/.pkglist_foreign

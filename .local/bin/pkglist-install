@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-pacman -S --needed - < /home/mitchell/.pkglist
-yay -S --needed - < /home/mitchell/.pkglist_foreign
+pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort .pkglist))
+yay -S --needed $(comm -13 <(pacman -Slq | sort) <(sort .pkglist))
