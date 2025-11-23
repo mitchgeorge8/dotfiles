@@ -6,27 +6,42 @@
 }
 
 window#waybar {
-	background-color: #1F1F28;
+	/* Kanagawa */
+	/* background-color: #1F1F28; */
+	/* Gruvbox Material */
+	background-color: #282828;
 }
 
 label,
 #tray>*>* {
-	color: #DCD7BA;
+	/* Kanagawa */
+	/* color: #DCD7BA; */
+	/* Gruvbox Material */
+	color: #D4BE98;
 	padding: 5px 10px;
 }
 
 label:hover,
 button:hover,
 #tray>*:hover {
-	background-color: #2A2A37;
+	/* Kanagawa */
+	/* background-color: #2A2A37; */
+	/* Gruvbox */
+	background-color: #45403D;
 }
 
 #workspaces label {
-	color: #363646;
+	/* Kanagawa */
+	/* color: #363646; */
+	/* Gruvbox Material */
+	color: #32302F
 }
 
 #workspaces button.active label {
-	color: #DCD7BA;
+	/* Kanagawa */
+	/* color: #DCD7BA; */
+	/* Gruvbox Material */
+	color: #D4BE98;
 }
 
 #custom-system-open,
@@ -36,23 +51,39 @@ button:hover,
 
 tooltip,
 menu {
-	background-color: rgba(31, 31, 40, 0.9);
-	border: 1px solid #DCD7BA;
+	/* Kanagawa */
+	/* background-color: rgba(31, 31, 40, 0.9); */
+	/* border: 1px solid #DCD7BA; */
+	/* Gruvbox Material */
+	background-color: rgba(40, 40, 40, 0.9);
+	border: 1px solid #D4BE98;
 	padding: 1px;
 }
 
 menuitem:hover {
-	background-color: rgba(42, 42, 55, 0.9);
+	/* Kanagawa */
+	/* background-color: rgba(42, 42, 55, 0.9); */
+	/* Gruvbox Material */
+	background-color: rgba(69, 64, 61, 0.9);
 }
 
 #custom-shutdown {
-	color: #C34043;
+	/* Kanagawa */
+	/* color: #C34043; */
+	/* Gruvbox Material */
+	color: #EA6962;
 }
 
 #custom-reboot {
-	color: #98BB6C;
+	/* Kanagawa */
+	/* color: #98BB6C; */
+	/* Gruvbox Material */
+	color: #A9B665;
 }
 
 #custom-lock {
-	color: #957FB8;
+	/* Kanagawa */
+	/* color: #658594; */
+	/* Gruvbox Material */
+	color: #7DAEA3;
 }
