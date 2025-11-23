@@ -1,10 +1,13 @@
+7zip
 base
 base-devel
 bluez
 bluez-utils
 brightnessctl
 btop
+cliphist
 cmatrix
+cronie
 dkms
 dolphin
 dunst
@@ -46,8 +49,11 @@ linux
 linux-firmware
 linux-headers
 luarocks
+mako
+man-db
 minecraft-launcher
 modrinth-app-git
+mpv
 nano
 neovim
 network-manager-applet
@@ -75,11 +81,14 @@ qt6-wayland
 sddm
 slurp
 smartmontools
+socat
 tlp
 tree
 tree-sitter-cli
+ttf-fira-code
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-mono
+ufw
 unzip
 vim
 waybar
@@ -98,5 +107,6 @@ yazi
 zram-generator
 zsh
 zsh-autosuggestions
+zsh-completions
 zsh-syntax-highlighting
 zsh-theme-powerlevel10k-git
