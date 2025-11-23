@@ -5,6 +5,10 @@ temp="/tmp/brightness"
 step=1
 signal=8
 
+if ! ddcutil ; then
+	exit
+fi
+
 if [ ! -f $temp ]; then
 	current=$(ddcutil --bus $bus --sleep-multiplier 0 getvcp 10 -t)
 	current=${current:9:-4}
@@ -27,7 +31,7 @@ else
 	new=$current
 fi
 
-echo "{\"text\":\"${new}\",\"percentage\":${new},\"tooltip\":\"Brightness\"}"
+echo "{\"percentage\":${new},\"tooltip\":\"Brightness\"}"
 pkill -RTMIN+$signal waybar
 
 if [ "$new" -ne "$current" ]; then

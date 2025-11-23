@@ -104,7 +104,8 @@
     "on-scroll-up": "~/.local/bin/temperature up",
     "on-scroll-down": "~/.local/bin/temperature down",
     "on-click": "~/.local/bin/temperature max",
-    "on-click-right": "~/.local/bin/temperature min"
+    "on-click-right": "~/.local/bin/temperature min",
+    "reverse-scrolling": true
   },
   "backlight": {
     "format": "{percent}% {icon}",
@@ -143,7 +144,8 @@
     "on-scroll-up": "~/.local/bin/brightness up",
     "on-scroll-down": "~/.local/bin/brightness down",
     "on-click": "~/.local/bin/brightness max",
-    "on-click-right": "~/.local/bin/brightness min"
+    "on-click-right": "~/.local/bin/brightness min",
+    "reverse-scrolling": true
   },
   "battery": {
     "format": "{capacity}% {icon}",
