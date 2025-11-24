@@ -2,6 +2,8 @@
 base
 base-devel
 bc
+blueman
+bluetui
 bluez
 bluez-utils
 btop
@@ -16,6 +18,7 @@ fcitx5-mozc
 feh
 fuzzel
 fzf
+gamemode
 git
 grim
 gst-plugin-pipewire
@@ -33,6 +36,7 @@ jellyfin-web
 jq
 kimageformats
 kitty
+lib32-opencl-nvidia
 libheif
 libpulse
 libreoffice-fresh
@@ -53,10 +57,11 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 npm
-nvidia-open
+nvidia
 nvidia-settings
 omnissa-horizon-client
 openbsd-netcat
+opencl-nvidia
 papirus-icon-theme
 pavucontrol
 pipewire
