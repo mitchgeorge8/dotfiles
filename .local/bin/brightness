@@ -5,7 +5,7 @@ temp="/tmp/brightness"
 step=1
 signal=8
 
-if ! ddcutil ; then
+if [[ "$(hostname)" == "laptop" ]]; then
 	exit
 fi
 
@@ -31,7 +31,7 @@ else
 	new=$current
 fi
 
-echo "{\"percentage\":${new},\"tooltip\":\"Brightness\"}"
+echo "{\"text\":\"brightness\",\"percentage\":${new},\"tooltip\":\"Brightness\"}"
 pkill -RTMIN+$signal waybar
 
 if [ "$new" -ne "$current" ]; then
