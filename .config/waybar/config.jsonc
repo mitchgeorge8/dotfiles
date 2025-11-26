@@ -69,7 +69,8 @@
     "format": ""
   },
   "tray": {
-    "spacing": 0
+    "spacing": 0,
+    "reverse-direction": true
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",

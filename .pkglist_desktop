@@ -63,6 +63,9 @@ nvidia-settings
 omnissa-horizon-client
 openbsd-netcat
 opencl-nvidia
+openrgb-git
+openrgb-plugin-effects-git
+openrgb-plugin-effects-git-debug
 papirus-icon-theme
 pavucontrol
 pipewire
