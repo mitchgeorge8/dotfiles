@@ -12,9 +12,9 @@
   "modules-right": [
     "tray",
     "pulseaudio",
-    "custom/hyprsunset",
+    // "custom/hyprsunset",
     "backlight",
-    "custom/ddcutil",
+    // "custom/ddcutil",
     "battery",
     "group/collapsible-power"
   ],

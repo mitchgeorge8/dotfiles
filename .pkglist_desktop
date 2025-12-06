@@ -1,4 +1,7 @@
 7zip
+aegisub
+alass
+azahar
 base
 base-devel
 bc
@@ -20,6 +23,7 @@ fuzzel
 fzf
 gamemode
 git
+goverlay
 grim
 gst-plugin-pipewire
 hypridle
@@ -28,9 +32,11 @@ hyprlock
 hyprpaper
 hyprpicker
 hyprpolkitagent
+hyprshot
 hyprsunset
 intel-ucode
 jdk21-openjdk
+jellyfin-mpv-shim
 jellyfin-server
 jellyfin-web
 jq
@@ -49,6 +55,8 @@ mako
 man-db
 mangohud
 minecraft-launcher
+mkvtoolnix-cli
+mkvtoolnix-gui
 mpv
 neovim
 network-manager-applet
@@ -65,7 +73,6 @@ openbsd-netcat
 opencl-nvidia
 openrgb-git
 openrgb-plugin-effects-git
-openrgb-plugin-effects-git-debug
 papirus-icon-theme
 pavucontrol
 pipewire
@@ -74,6 +81,9 @@ pipewire-jack
 pipewire-pulse
 prismlauncher
 proton-vpn-gtk-app
+python-pip
+python-pipx
+python-setuptools
 qbittorrent
 qt5-wayland
 qt6-wayland
@@ -94,7 +104,6 @@ wireplumber
 wtype
 xdg-desktop-portal-hyprland
 yay
-yay-debug
 yazi
 zip
 zoxide

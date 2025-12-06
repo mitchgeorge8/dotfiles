@@ -1,0 +1,51 @@
+#!/bin/bash
+
+for file in *.mkv 
+do
+  i=${file%.mkv}
+
+  if [ -f "$i.srt" ]; then
+    # Extract existing sub file from video, should be timed correctly
+    ffmpeg -i "$i.mkv" -map 0:s:0 "$i-temp1.srt"
+
+    # Remove all formatting to prevent errors in alass
+    ffmpeg -i "$i-temp1.srt" -c:s srt -map 0:s:0 "$i-temp2.srt"
+
+    # Use extracted reference sub to retime target sub
+    alass "$i-temp2.srt" "$i.srt" "$i-temp3.srt"
+
+    # Shift the target sub again using the original video file
+    alass "$i.mkv" "$i-temp3.srt" "$i-retimed.srt" --no-split
+
+		# # Rename video track to be same as file name
+		mkvmerge -o "$i-temp4.mkv" --track-name 0:"$i" "$i.mkv"
+
+		# Remove audio tracks other than Japanese, if they exist
+		mkvmerge -o "$i-temp5.mkv" -a jpn "$i-temp4.mkv"
+
+    # Remove existing attachments from video file to decrease file size
+    mkvmerge -o "$i-temp6.mkv" -s 2 --no-attachments --no-global-tags "$i-temp5.mkv"
+  
+    # Mux video and subtitle files
+    mkvmerge -o "$i-temp7.mkv" "$i-retimed.srt" "$i-temp6.mkv"
+  
+    # Delete original video and sub files
+    rm "$i.mkv"
+    rm "$i.srt"
+    rm "$i-retimed.srt"
+  
+    # Set langauge tags and make Japanese default
+    mkvmerge -o "$i.mkv" --language 2:jpn --language 3:eng --track-name 2:Japanese --track-name 3:English --default-track-flag 2 --default-track-flag 3:0 --forced-display-flag 3:0 "$i-temp7.mkv"
+  
+    # Delete the temp files that were created
+    rm "$i-temp1.srt"
+    rm "$i-temp2.srt"
+    rm "$i-temp3.srt"
+    rm "$i-temp4.mkv"
+    rm "$i-temp5.mkv"
+		rm "$i-temp6.mkv"
+		rm "$i-temp7.mkv"
+  else
+    echo "No matching subtitle file found for '$i.mkv'"
+  fi
+done
