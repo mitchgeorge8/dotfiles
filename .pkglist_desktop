@@ -10,11 +10,13 @@ bluetui
 bluez
 bluez-utils
 btop
+cava
 cliphist
 cronie
 ddcutil
 dolphin
 efibootmgr
+evolution-data-server
 fcitx5
 fcitx5-configtool
 fcitx5-mozc
@@ -54,6 +56,7 @@ loupe
 mako
 man-db
 mangohud
+matugen-git
 minecraft-launcher
 mkvtoolnix-cli
 mkvtoolnix-gui
@@ -61,6 +64,7 @@ mpv
 neovim
 network-manager-applet
 networkmanager
+noctalia-shell
 noto-color-emoji-fontconfig
 noto-fonts
 noto-fonts-cjk
@@ -79,6 +83,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+power-profiles-daemon
 prismlauncher
 proton-vpn-gtk-app
 python-pip
@@ -86,7 +91,10 @@ python-pipx
 python-setuptools
 qbittorrent
 qt5-wayland
+qt6-doc
 qt6-wayland
+qt6ct
+quickshell-git
 sddm
 slurp
 socat
@@ -97,10 +105,13 @@ torbrowser-launcher
 ttf-fira-code
 ufw
 unzip
+virtualbox
+virtualbox-guest-iso
 waybar
 wev
 wget
 wireplumber
+wlsunset
 wtype
 xdg-desktop-portal-hyprland
 yay

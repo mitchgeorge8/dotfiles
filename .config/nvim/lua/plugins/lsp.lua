@@ -17,13 +17,15 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
 		opts = {
 			formatters_by_ft = {
 				css = { "prettier" },
 				json = { "jq" },
 				jsonc = { "jq" },
 				lua = { "stylua" },
-				qml = { "qmlformat" },
+				-- qml = { "qmlformat" },
 				bash = { "shfmt" },
 			},
 			format_on_save = {
