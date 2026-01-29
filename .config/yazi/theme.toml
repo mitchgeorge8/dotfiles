@@ -1,5 +1,6 @@
 [flavor]
-dark = "kanagawa"
+light = "noctalia"
+dark  = "noctalia"
 
 [icon]
 prepend_dirs = [
