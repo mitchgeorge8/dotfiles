@@ -40,6 +40,13 @@ binds {
 		Mod+XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
 		Mod+XF86AudioLowerVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
 
+		// Plugins
+		Mod+Shift+C { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel noctalia-calculator"; }
+		Mod+Shift+H { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel hassio"; }
+		Mod+Shift+M { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel monique"; }
+		Mod+Shift+S { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel syncthing-status"; }
+		Mod+Shift+T { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel tailscale"; }
+
 		// Window management
     Mod+Tab repeat=false { toggle-overview; }
 

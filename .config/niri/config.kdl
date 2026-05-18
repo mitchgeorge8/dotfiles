@@ -3,21 +3,21 @@ spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "nm-applet"
 spawn-at-startup "openrgb" "--startminimized"
 spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "syncthing"
+spawn-at-startup "syncthing --no-browser"
 
 // Misc
 prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
 hotkey-overlay {
 		skip-at-startup
 }
 
 // Environment variables
 environment {
-		GTK_THEME "Adwaita:dark"
+		QS_ICON_THEME "Papirus-Dark"
 }
 
-// https://niri-wm.github.io/niri/Configuration:-Input
+// https://niri-wm.github.io/niri/Configuration%3A-Input.html
 input {
     touchpad {
         tap
@@ -32,12 +32,12 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
-// https://niri-wm.github.io/niri/Configuration:-Outputs
+// https://niri-wm.github.io/niri/Configuration%3A-Outputs.html
 output "HDMI-A-1" {
 	mode "1920x1080@143.981"
 }
 
-// https://niri-wm.github.io/niri/Configuration:-Layout
+// https://niri-wm.github.io/niri/Configuration%3A-Layout.html
 layout {
     gaps 8
     center-focused-column "never"
@@ -59,9 +59,6 @@ layout {
 
     border {
         width 2
-        active-color "#C8C093"
-        inactive-color "#2A2A37"
-        urgent-color "#E82424"
     }
 
     shadow {
@@ -69,10 +66,17 @@ layout {
         softness 30
         spread 5
         offset x=0 y=0
-        color "#0007"
     }
 }
 
+// https://niri-wm.github.io/niri/Configuration%3A-Recent-Windows.html
+recent-windows {
+		highlight {
+				corner-radius 8
+		}
+}
+
+// https://niri-wm.github.io/niri/Configuration%3A-Miscellaneous.html#blur
 blur {
   passes 2
   offset 3.0
@@ -80,7 +84,7 @@ blur {
   saturation 1.0
 }
 
-// https://niri-wm.github.io/niri/Configuration:-Window-Rules
+// https://niri-wm.github.io/niri/Configuration%3A-Window-Rules.html
 window-rule {
 		geometry-corner-radius 8
 		clip-to-geometry true
@@ -90,11 +94,11 @@ window-rule {
   	}
 }
 
+// https://niri-wm.github.io/niri/Configuration%3A-Layer-Rules.html
 layer-rule {
   	match namespace="^noctalia-overview*"
   	place-within-backdrop true
 }
-
 layer-rule {
   	match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
   	background-effect {
@@ -102,19 +106,18 @@ layer-rule {
   	}
 }
 
-// https://niri-wm.github.io/niri/Configuration:-Recent-Windows
-recent-windows {
-		highlight {
-				active-color "#C8C093"
-				urgent-color "#E82424"
-				corner-radius 8
-		}
+// https://niri-wm.github.io/niri/Configuration%3A-Gestures.html
+gestures {
+    hot-corners {
+        off
+    }
 }
 
+// https://docs.noctalia.dev/v4/getting-started/compositor-settings/niri/
 debug {
-  // Allows notification actions and window activation from Noctalia.
   honor-xdg-activation-with-invalid-serial
 }
 
 // Include other config files
 include "binds.kdl"
+include "noctalia.kdl"
